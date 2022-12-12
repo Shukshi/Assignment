@@ -12,23 +12,23 @@ import java.util.List;
 @Component
 public interface SearchMapper {
 
-//    @Select("select videoId title description publishedAt channelTitle from video order by publishedAT desc limit 20")
-//    List<SearchResponse> findAll();
+    @Select("select * from video order by publishedAT desc limit 10")
+    List<SearchResponse> findAll();
 
-//    @Select("select videoId title description publishedAt channelTitle from video where videoTitle like #{videoTitle}")
-//    SearchResponse findByTitle(@Param("videoTitle") String videoTitle);
-//
-//    @Select("select videoId title description publishedAt channelTitle from video where videoDescription like #{videoDescription}")
-//    SearchResponse findByDescription(@Param("videoDescription") String videoDescription);
+    @Select("select * from video where title like #{videoTitle}")
+    List <SearchResponse> findByTitle(@Param("videoTitle") String videoTitle);
 
-    @Select ("<script> select videoId title description publishedAt channelTitle from video order by publishedAT desc " +
-            "<if title != null>" +
-            "where title like #{title} " +
+    @Select("select * from video where description like #{videoDescription}")
+    List<SearchResponse> findByDescription(@Param("videoDescription") String videoDescription);
+
+    @Select ("<script> select * from video" +
+            "<if test='title != null'>" +
+            " where title like #{title} " +
             "</if> " +
-            "<if description != null> " +
-            "where description like #{description}" +
+            "<if test='description != null'> " +
+            " where description like #{description}" +
             "</if> " +
-            "limit 20" +
+            " order by publishedAT desc limit 20" +
             "</script>")
     List<SearchResponse> findByParameter(@Param("title") String title, @Param("description") String description);
 
