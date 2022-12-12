@@ -1,4 +1,4 @@
-package com.example.assignment;
+package com.example.assignment.controller;
 
 import com.example.assignment.mapper.SearchMapper;
 import com.example.assignment.response.SearchResponse;
@@ -21,31 +21,8 @@ public class GetSearchController {
         this.searchMapper = searchMapper;
     }
 
-//    @GetMapping
-//    public List<SearchResponse> findAllVideo (@RequestParam(name="title",required=false)String title, @RequestParam(name="description",required=false)String description){
-//        return searchMapper.findAll();
-//    }
-//
-//    @GetMapping
-//    public SearchResponse findByTitleVideo(String title) {
-//        return searchMapper.findByTitle(title);
-//    }
-//
-//    @GetMapping
-//    public SearchResponse findByDescriptionVideo(String description) {
-//        return searchMapper.findByDescription(description);
-//    }
-
     @GetMapping
     public List<SearchResponse> findByParameters(@RequestParam(name="title",required=false)String title, @RequestParam(name="description",required=false)String description){
-//        if(Objects.nonNull(title)){
-//            return searchMapper.findByTitle(title);
-//        } else if (Objects.nonNull(description)) {
-//            return searchMapper.findByDescription(description);
-//        }
-//        else{
-//            return searchMapper.findAll();
-//        }
         return searchMapper.findByParameter(title, description);
     }
 }
