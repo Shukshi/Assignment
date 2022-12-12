@@ -41,7 +41,7 @@ public class YoutubeService {
 
         System.out.println(publishedAfterFilter);
 
-        YoutubeResponse youtubeResponse = youtubeClient.getYoutubeClient("AIzaSyAp-DpC8oL-g5UPO-2A6bmA_odDISOkMNU",
+        YoutubeResponse youtubeResponse = youtubeClient.getYoutubeClient("AIzaSyC7yB--Aghsw5HLPHj_pgiJ-A4werr9BL8",
                 "video",
                 "date",
                 publishedAfterFilter,
